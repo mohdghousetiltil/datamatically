@@ -268,11 +268,43 @@ const Hero = () => {
         </MotionDiv>
       </MotionDiv>
 
+      {/* Quick Actions Right Side */}
+      <MotionDiv 
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 1.2, duration: 0.8, ease: "easeOut" }}
+        className="absolute z-20 flex flex-col gap-3 right-4 bottom-24 lg:top-1/2 lg:bottom-auto lg:-translate-y-1/2 lg:right-6 lg:gap-4"
+      >
+        <a 
+          href="mailto:hello@datamatically.com"
+          className="p-3 lg:p-4 bg-white/80 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-full hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 transition-all group relative shadow-lg hover:scale-110"
+          aria-label="Send Email"
+        >
+           <Mail className="w-4 h-4 lg:w-5 lg:h-5 text-gray-700 dark:text-white group-hover:text-white transition-colors" />
+           <span className="absolute right-full mr-4 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-white dark:bg-black text-gray-800 dark:text-white text-xs font-bold rounded-lg opacity-0 group-hover:opacity-100 transition-all translate-x-2 group-hover:translate-x-0 whitespace-nowrap shadow-xl pointer-events-none border border-gray-100 dark:border-gray-800 hidden md:block">
+             Email Us
+           </span>
+        </a>
+
+        <a 
+          href="https://calendly.com/mo-datamatically" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="p-3 lg:p-4 bg-white/80 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-full hover:bg-green-600 hover:text-white dark:hover:bg-green-600 transition-all group relative shadow-lg hover:scale-110"
+          aria-label="Book Consultation"
+        >
+           <Calendar className="w-4 h-4 lg:w-5 lg:h-5 text-gray-700 dark:text-white group-hover:text-white transition-colors" />
+           <span className="absolute right-full mr-4 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-white dark:bg-black text-gray-800 dark:text-white text-xs font-bold rounded-lg opacity-0 group-hover:opacity-100 transition-all translate-x-2 group-hover:translate-x-0 whitespace-nowrap shadow-xl pointer-events-none border border-gray-100 dark:border-gray-800 hidden md:block">
+             Book Consultation
+           </span>
+        </a>
+      </MotionDiv>
+
       <MotionDiv 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-gray-400 dark:text-gray-500 flex flex-col items-center gap-2"
+        className="absolute bottom-10 inset-x-0 flex flex-col items-center gap-2 text-gray-400 dark:text-gray-500 pointer-events-none"
       >
         <span className="text-[10px] uppercase tracking-widest opacity-50">Scroll to explore</span>
         <ChevronDown className="w-4 h-4" />
@@ -602,8 +634,8 @@ const Founders = () => {
             role: "Head of Sales", 
             img: "https://ui-avatars.com/api/?name=Charlie+Guthrie&background=0f172a&color=fff&size=200",
             desc: "Spearheading client partnerships and ensuring every automation solution delivers measurable financial ROI.",
-            linkedin: " ",
-            email: " "
+            linkedin: "#",
+            email: "#"
         },
         { 
             name: "Craig Haydon", 
@@ -611,7 +643,7 @@ const Founders = () => {
             img: "https://ui-avatars.com/api/?name=Craig+Haydon&background=0f172a&color=fff&size=200",
             desc: "Developing long-term strategic roadmaps and financial frameworks to sustain rapid business growth.",
             linkedin: "https://www.linkedin.com/in/craig-haydon-447aa673/",
-            email: " "
+            email: "#"
         }
     ];
 
@@ -690,7 +722,7 @@ const Contact = () => {
                 <span className="text-xs text-gray-500 uppercase tracking-wider">Email Us</span>
             </a>
 
-             <a href="https://calendly.com" target="_blank" rel="noopener noreferrer" className="p-6 rounded-2xl bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:bg-gray-50 dark:hover:bg-white/10 hover:border-green-500 transition-colors flex flex-col items-center gap-4 backdrop-blur-sm group shadow-sm dark:shadow-none">
+             <a href="https://calendly.com/mo-datamatically" target="_blank" rel="noopener noreferrer" className="p-6 rounded-2xl bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:bg-gray-50 dark:hover:bg-white/10 hover:border-green-500 transition-colors flex flex-col items-center gap-4 backdrop-blur-sm group shadow-sm dark:shadow-none">
                 <div className="p-3 bg-green-100 dark:bg-green-500/20 rounded-full group-hover:scale-110 transition-transform">
                     <Calendar className="w-6 h-6 text-green-600 dark:text-green-500" />
                 </div>
