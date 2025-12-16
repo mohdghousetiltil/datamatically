@@ -291,11 +291,11 @@ const Hero = () => {
           target="_blank" 
           rel="noopener noreferrer"
           className="p-3 lg:p-4 bg-white/80 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-full hover:bg-green-600 hover:text-white dark:hover:bg-green-600 transition-all group relative shadow-lg hover:scale-110"
-          aria-label="Book Consultation"
+          aria-label="Book Your Free 30-min Consultation"
         >
            <Calendar className="w-4 h-4 lg:w-5 lg:h-5 text-gray-700 dark:text-white group-hover:text-white transition-colors" />
            <span className="absolute right-full mr-4 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-white dark:bg-black text-gray-800 dark:text-white text-xs font-bold rounded-lg opacity-0 group-hover:opacity-100 transition-all translate-x-2 group-hover:translate-x-0 whitespace-nowrap shadow-xl pointer-events-none border border-gray-100 dark:border-gray-800 hidden md:block">
-             Book Consultation
+             Book Your Free 30-min Consultation
            </span>
         </a>
       </MotionDiv>
