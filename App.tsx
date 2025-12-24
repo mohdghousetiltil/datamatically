@@ -63,8 +63,7 @@ const AutomationTicker = () => {
     "Manual Data Entry", "Reporting & Dashboards", "Logistics Workflows", 
     "CRM & Data Sync", "Document Automation", "Database Management", 
     "Invoice Processing", "Inventory Management", "Predictive Maintenance", 
-    "Demand Forecasting", "Fraud Detection", "Real-Time Analytics", 
-    "ERP Integrations", "API Integrations", "Cloud Automation", 
+    "Demand Forecasting", "Real-Time Analytics", "API Integrations", "Cloud Automation", 
     "Compliance Reporting", "Route Optimization"
   ];
   
@@ -346,7 +345,7 @@ const Hero = () => {
 const ToolsSection = () => {
     const tools = [
         "n8n", "Python", "Zapier", "AI Agents", "NLP", "ML Models",
-        "APIs", "Power Automate", "SQL", "R", "AWS", "Docker", "Azure"
+        "APIs",, "PowerBI", "Power Automate", "SQL", "R", "AWS", "Docker", "Azure"
     ];
 
     return (
