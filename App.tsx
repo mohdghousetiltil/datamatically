@@ -622,7 +622,7 @@ const Projects = () => {
     {
       client: "Melbourne FinTech",
       title: "Real-time Fraud Detection",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&format=crop",
       tag: "Finance",
       stat: "99.9% Accuracy"
     }
@@ -637,13 +637,13 @@ const Projects = () => {
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeInUp}
-          className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6"
+          className="flex flex-col md:flex-row justify-between items-center md:items-end mb-16 gap-6"
         >
-          <div>
+          <div className="text-center md:text-left">
              <span className="text-blue-600 dark:text-blue-500 font-bold tracking-widest uppercase text-xs mb-3 block">Case Studies</span>
              <h2 className="text-3xl md:text-5xl font-bold mt-2 text-slate-900 dark:text-white tracking-tight">Engineered for Impact</h2>
           </div>
-          <p className="text-gray-600 dark:text-gray-400 max-w-md text-right md:text-left font-light">
+          <p className="text-gray-600 dark:text-gray-400 max-w-md text-center md:text-left font-light">
             See how we've helped Australian businesses save thousands of hours and millions of dollars.
           </p>
         </MotionDiv>
@@ -765,7 +765,7 @@ const Contact = () => {
         `Name: ${formData.name}\n` +
         `Email: ${formData.email}\n` +
         `Project Details: ${formData.details}\n\n` +
-        `message received via Datamatically.com`
+        `message sent via Datamatically.com`
     );
     
     // Construct the mailto link
