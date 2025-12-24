@@ -1,10 +1,11 @@
+
 import React, { useState, useEffect, Suspense, useRef } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { 
   Menu, X, ArrowRight, Activity, Database, Cpu, 
   ChevronDown, CheckCircle, Mail, Globe, Shield, 
   ExternalLink, Sun, Moon, Search, Zap, Rocket, 
-  Users, MapPin, Linkedin, Calendar, Play, Pause
+  Users, MapPin, Linkedin, Calendar, Play, Pause, Loader2
 } from 'lucide-react';
 import Scene from './components/Scene.tsx';
 
@@ -63,7 +64,8 @@ const AutomationTicker = () => {
     "Manual Data Entry", "Reporting & Dashboards", "Logistics Workflows", 
     "CRM & Data Sync", "Document Automation", "Database Management", 
     "Invoice Processing", "Inventory Management", "Predictive Maintenance", 
-    "Demand Forecasting", "Real-Time Analytics", "API Integrations", "Cloud Automation", 
+    "Demand Forecasting", "Fraud Detection", "Real-Time Analytics", 
+    "ERP Integrations", "API Integrations", "Cloud Automation", 
     "Compliance Reporting", "Route Optimization"
   ];
   
@@ -302,7 +304,7 @@ const Hero = () => {
             Automating <br /> The Future
           </h1>
           <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
-            AI & Data Automation consultancy for Australian SMEs that eliminate manual work, reduce errors, improve efficiency, and scale without hiring more staff.
+            Automation & AI consultancy for Australian SMEs that eliminate manual work, reduce errors, improve efficiency, and scale without hiring more staff.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
              <a 
@@ -345,7 +347,7 @@ const Hero = () => {
 const ToolsSection = () => {
     const tools = [
         "n8n", "Python", "Zapier", "AI Agents", "NLP", "ML Models",
-        "APIs",, "PowerBI", "Power Automate", "SQL", "R", "AWS", "Docker", "Azure"
+        "APIs", "Power Automate", "SQL", "R", "AWS", "Docker", "Azure"
     ];
 
     return (
@@ -673,15 +675,15 @@ const Founders = () => {
             img: "https://ui-avatars.com/api/?name=Mohammed+Ghouse+Tiltil&background=0f172a&color=fff&size=200",
             desc: "Leading the technical vision, architecting bespoke AI models and data ecosystems that drive automation.",
             linkedin: "https://www.linkedin.com/in/mohammed-ghouse-tiltil/",
-            email: "mailto:mohammed@datamatically.com"
+            email: "mailto:hello@datamatically.com"
         },
         { 
             name: "Charlie Guthrie", 
             role: "Head of Sales", 
             img: "https://ui-avatars.com/api/?name=Charlie+Guthrie&background=0f172a&color=fff&size=200",
             desc: "Spearheading client partnerships and ensuring every automation solution delivers measurable financial ROI.",
-            linkedin: " ",
-            email: "mailto:charlie@datamatically.com"
+            linkedin: "#",
+            email: "#"
         },
         { 
             name: "Craig Haydon", 
@@ -689,7 +691,7 @@ const Founders = () => {
             img: "https://ui-avatars.com/api/?name=Craig+Haydon&background=0f172a&color=fff&size=200",
             desc: "Developing long-term strategic roadmaps and financial frameworks to sustain rapid business growth.",
             linkedin: "https://www.linkedin.com/in/craig-haydon-447aa673/",
-            email: " "
+            email: "#"
         }
     ];
 
@@ -745,6 +747,41 @@ const Founders = () => {
 
 // Contact Section
 const Contact = () => {
+  const [formData, setFormData] = useState({ name: '', email: '', details: '' });
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email) return;
+
+    setStatus('sending');
+
+    // Simulate automation processing
+    await new Promise(resolve => setTimeout(resolve, 2000));
+
+    // Construct the email body as requested
+    const subject = encodeURIComponent(`Inquiry from ${formData.name}`);
+    const body = encodeURIComponent(
+        `Name: ${formData.name}\n` +
+        `Email: ${formData.email}\n` +
+        `Project Details: ${formData.details}\n\n` +
+        `message received via Datamatically.com`
+    );
+    
+    // Construct the mailto link
+    const mailtoLink = `mailto:hello@datamatically.com?subject=${subject}&body=${body}`;
+    
+    // Open the email client
+    window.location.href = mailtoLink;
+
+    setStatus('sent');
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
   return (
     <section id="contact" className="py-24 px-6 md:px-12 bg-slate-50 dark:bg-black border-t border-gray-200 dark:border-gray-900 relative z-10 scroll-mt-28">
       <div className="max-w-4xl mx-auto text-center">
@@ -785,26 +822,89 @@ const Contact = () => {
                 </div>
             </div>
 
-            <form 
-              className="text-left space-y-4 max-w-xl mx-auto bg-white dark:bg-gray-900/50 p-8 rounded-[2.5rem] border border-gray-200 dark:border-800 backdrop-blur-md shadow-xl dark:shadow-none"
-              onSubmit={(e) => e.preventDefault()}
-            >
-            <div className="grid grid-cols-2 gap-4">
-                <div>
-                    <label className="block text-[10px] font-bold text-gray-500 mb-2 uppercase tracking-widest">Name</label>
-                    <input type="text" className="w-full bg-gray-50 dark:bg-black/50 border border-gray-300 dark:border-gray-700 rounded-xl p-3 focus:ring-2 focus:ring-blue-600 outline-none text-slate-900 dark:text-white transition-all focus:border-blue-600 font-space" />
-                </div>
-                <div>
-                    <label className="block text-[10px] font-bold text-gray-500 mb-2 uppercase tracking-widest">Email</label>
-                    <input type="email" className="w-full bg-gray-50 dark:bg-black/50 border border-gray-300 dark:border-gray-700 rounded-xl p-3 focus:ring-2 focus:ring-blue-600 outline-none text-slate-900 dark:text-white transition-all focus:border-blue-600 font-space" />
-                </div>
+            <div className="max-w-xl mx-auto overflow-hidden">
+                <AnimatePresence mode="wait">
+                    {status === 'sent' ? (
+                        <MotionDiv
+                            key="success"
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 1.1 }}
+                            className="bg-white dark:bg-gray-900/50 p-12 rounded-[2.5rem] border border-green-500/30 backdrop-blur-md flex flex-col items-center text-center py-20"
+                        >
+                            <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(34,197,94,0.4)]">
+                                <CheckCircle className="w-10 h-10 text-white" />
+                            </div>
+                            <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">Done</h3>
+                            <p className="text-gray-600 dark:text-gray-400 font-light">Message Sent</p>
+                            <button 
+                                onClick={() => setStatus('idle')}
+                                className="mt-8 text-blue-500 text-xs font-bold uppercase tracking-widest hover:underline"
+                            >
+                                Send another message
+                            </button>
+                        </MotionDiv>
+                    ) : (
+                        <MotionDiv
+                            key="form"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            className="bg-white dark:bg-gray-900/50 p-8 rounded-[2.5rem] border border-gray-200 dark:border-gray-800 backdrop-blur-md shadow-xl dark:shadow-none"
+                        >
+                            <form className="text-left space-y-4" onSubmit={handleSubmit}>
+                                <div className="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-[10px] font-bold text-gray-500 mb-2 uppercase tracking-widest font-space">Name</label>
+                                        <input 
+                                            required
+                                            type="text" 
+                                            name="name"
+                                            value={formData.name}
+                                            onChange={handleChange}
+                                            className="w-full bg-gray-50 dark:bg-black/50 border border-gray-300 dark:border-gray-700 rounded-xl p-3 focus:ring-2 focus:ring-blue-600 outline-none text-slate-900 dark:text-white transition-all focus:border-blue-600 font-space" 
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-[10px] font-bold text-gray-500 mb-2 uppercase tracking-widest font-space">Email</label>
+                                        <input 
+                                            required
+                                            type="email" 
+                                            name="email"
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            className="w-full bg-gray-50 dark:bg-black/50 border border-gray-300 dark:border-gray-700 rounded-xl p-3 focus:ring-2 focus:ring-blue-600 outline-none text-slate-900 dark:text-white transition-all focus:border-blue-600 font-space" 
+                                        />
+                                    </div>
+                                </div>
+                                <div>
+                                    <label className="block text-[10px] font-bold text-gray-500 mb-2 uppercase tracking-widest font-space">Project Details</label>
+                                    <textarea 
+                                        name="details"
+                                        value={formData.details}
+                                        onChange={handleChange}
+                                        rows={4} 
+                                        className="w-full bg-gray-50 dark:bg-black/50 border border-gray-300 dark:border-gray-700 rounded-xl p-3 focus:ring-2 focus:ring-blue-600 outline-none text-slate-900 dark:text-white transition-all focus:border-blue-600 font-space"
+                                    ></textarea>
+                                </div>
+                                <button 
+                                    disabled={status === 'sending'}
+                                    className="w-full bg-black dark:bg-white text-white dark:text-black font-bold py-4 rounded-lg hover:opacity-80 transition-opacity flex items-center justify-center gap-3 disabled:opacity-50"
+                                >
+                                    {status === 'sending' ? (
+                                        <>
+                                            <Loader2 className="w-4 h-4 animate-spin" />
+                                            Processing...
+                                        </>
+                                    ) : (
+                                        'Send Message'
+                                    )}
+                                </button>
+                            </form>
+                        </MotionDiv>
+                    )}
+                </AnimatePresence>
             </div>
-            <div>
-                <label className="block text-[10px] font-bold text-gray-500 mb-2 uppercase tracking-widest">Project Details</label>
-                <textarea rows={4} className="w-full bg-gray-50 dark:bg-black/50 border border-gray-300 dark:border-gray-700 rounded-xl p-3 focus:ring-2 focus:ring-blue-600 outline-none text-slate-900 dark:text-white transition-all focus:border-blue-600 font-space"></textarea>
-            </div>
-            <button className="w-full bg-black dark:bg-white text-white dark:text-black font-bold py-4 rounded-lg hover:opacity-80 transition-opacity">Send Message</button>
-            </form>
         </MotionDiv>
       </div>
     </section>
